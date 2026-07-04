@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bpaas-design-system" content="editorial-apple">
+    <meta name="bpaas-design-theme" content="kr-warm-grid">
+    <title>상암 유흥 가이드 | 정보</title>
+    <meta name="description" content="상암 유흥 가이드의 상세 정보 페이지입니다. 지역 맛집, 주차 팁, 교통 정보까지 브로들을 위한 완벽한 상암 밤문화 정보 모음.">
+    <meta name="keywords" content="상암 유흥 정보, 상암 술집 정보, 상암 주차, 상암 교통, 상암 유흥 가이드, 상암 밤문화 팁, 상암 데이트 정보">
+    <link rel="canonical" href="https://t3b08-sa-night-guide.vercel.app/info">
+    <meta property="og:title" content="상암 유흥 가이드 | 완벽한 밤문화 정보">
+    <meta property="og:description" content="상암에서 유흥 즐기기 좋은 곳의 모든 정보. 주차, 교통, 꿀팁까지 브로들이 궁금해하는 모든 것.">
+    <style>
+        *, *::before, *::after { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #fdf8f3;
+            color: #1a1a1a;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* 헤더 & 네비게이션 */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e8e0d8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .nav-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .logo a {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #c0392b;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #c0392b;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 26px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* 히어로 */
+        .hero {
+            background: linear-gradient(135deg, #f5e6d3 0%, #fdf8f3 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        /* 섹션 공통 */
+        .section {
+            padding: 64px 0;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+        }
+
+        /* 정보 카드 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .info-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eee8e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #c0392b;
+        }
+        .info-card p {
+            color: #444;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .info-card .highlight {
+            background: #fef3e8;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+            font-weight: 500;
+            color: #8b4513;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8e0d8;
+            padding: 20px 0;
+        }
+        .faq-item:first-child {
+            border-top: 1px solid #e8e0d8;
+        }
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .faq-answer {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-right: 20px;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        footer a {
+            color: #c0392b;
+            text-decoration: none;
+        }
+
+        /* 반응형 768px */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                padding: 20px 24px;
+                border-bottom: 1px solid #e8e0d8;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                gap: 16px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <header>
+        <nav class="nav-grid">
+            <div class="logo"><a href="/">상암유흥</a></div>
+            <button class="hamburger" aria-label="메뉴 열기" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/">홈</a></li>
+                <li><a href="/places">장소</a></li>
+                <li><a href="/info">정보</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-grid">
+            <h1>상암 밤문화 완벽 정보</h1>
+            <p>브로들이 진짜 궁금해하는 상암 유흥의 모든 것. 주차, 교통, 꿀팁까지 싹 다 모았어.</p>
+            <p style="font-size:1rem; color:#888;">상암에서 놀 준비 됐어? 이거만 알면 너도 상암 마스터</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">📍 상암 유흥 필수 정보</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🚗 주차 팁</h3>
+                    <p>상암동 주차는 진짜 빡센 편이야. 주말 저녁이면 만차인 곳도 많고.</p>
+                    <p>내가 추천하는 건 <strong>월드컵경기장 공영주차장</strong>이야. 넓고 요금도 저렴해. 거기서 걸어서 5~10분이면 대부분 유흥가 도착!</p>
+                    <p>또는 <strong>상암MBC 주차장</strong>도 괜찮아. 단, 행사 있으면 피하는 게 좋아.</p>
+                    <div class="highlight">💡 꿀팁: 카카오T나 네이버 지도로 실시간 주차 가능 확인하고 가면 개꿀</div>
+                </div>
+                <div class="info-card">
+                    <h3>🚇 교통 & 이동</h3>
+                    <p>지하철 <strong>6호선 월드컵경기장역</strong>이 제일 가까워. 1번 출구로 나오면 바로 유흥가랑 연결돼.</p>
+                    <p>버스도 다양하게 다니는데, <strong>마을버스 상암01, 02</strong>가 좁은 골목까지 잘 들어가줘.</p>
+                    <p>야간에는 택시 잡기가 하늘의 별 따기니까, <strong>카카오택시</strong> 미리 예약하거나 <strong>대리운전</strong> 준비해두는 게 좋아.</p>
+                    <div class="highlight">🍻 음주 예정이면 대리운전 앱 필수! 나도 한 번 깜빡했다가 고생함</div>
+                </div>
+                <div class="info-card">
+                    <h3>🍔 숨은 맛집 & 야식</h3>
+                    <p>술자리 끝나고 허한 배를 달랠 곳이 필요하지? 상암에는 <strong>24시 감자탕</strong>과 <strong>포차 골목</strong>이 유명해.</p>
+                    <p>특히 <strong>'상암포차'</strong>는 삼겹살에 소주 한 잔 하기 좋은 곳. 브로들끼리 가면 분위기 미쳤어.</p>
+                    <p>떡볶이, 순대, 튀김 같은 길거리 음식도 늦은 시간까지 파니까 참고해.</p>
+                    <div class="highlight">🔥 내 최애는 '상암감자탕'! 해장으로 끝내줌</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #f5ede6;">
+        <div class="container">
+            <h2 class="section-title">❓ 자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">상암에서 제일 핫한 유흥 지역은 어디야? <span style="color:#c0392b;">▼</span></div>
+                    <div class="faq-answer">상암동 월드컵경기장 주변, 특히 <strong>상암MBC 인근</strong>과 <strong>월드컵로 골목</strong>이 유흥가로 유명해. 바, 펍, 라운지가 밀집해 있어서 골라먹는 재미가 있어.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">주말에 가면 사람 너무 많지? <span style="color:#c0392b;">▼</span></div>
+                    <div class="faq-answer">맞아, 금요일 저녁과 토요일은 진짜 북적여. 예약 없으면 웨이팅이 기본이니까, 미리 전화하거나 앱으로 예약하는 걸 추천해. 평일에는 한산해서 더 편하게 즐길 수 있어.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">처음 가는 브로인데 추천 코스 있어? <span style="color:#c0392b;">▼</span></div>
+                    <div class="faq-answer">첫 코스는 <strong>월드컵경기장역 1번 출구</strong>에서 시작해! 근처 펍에서 가볍게 맥주 한 잔 하고, 포차 골목에서 안주 먹고, 마지막으로 라운지에서 칵테일 즐기는 루트가 정석이야. 아니면 내가 자주 가는 루트를 알려줄까? <a href="tel:010-1234-5678" style="color:#c0392b;">전화</a> 줘, 자세히 알려줄게!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">주차장은 어디가 제일 좋아? <span style="color:#c0392b;">▼</span></div>
+                    <div class="faq-answer">내 경험상 <strong>월드컵경기장 공영주차장</strong>이 최고야. 넓고 요금도 30분에 500원 정도로 저렴. 단, 경기나 콘서트 있는 날은 피하는 게 좋아. 그 외에는 <strong>상암동 공영주차장</strong>도 괜찮고, 골목 안에 있는 유료주차장도 많으니까 네비로 검색해봐.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 상암 유흥 가이드 | 브로들을 위한 밤문화 정보</p>
+            <p>문의: <a href="tel:010-1234-5678">010-1234-5678</a> | <a href="mailto:bro@sanam-night.com">bro@sanam-night.com</a></p>
+            <p style="font-size:0.8rem; margin-top:16px;">상암에서 즐거운 밤 보내세요, 브로!</p>
+        </div>
+    </footer>
+
+    <script>
+        // 모바일 햄버거 메뉴 토글
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // FAQ 아코디언 (간단 토글)
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+        // FAQ 기본 닫힘 상태
+        document.querySelectorAll('.faq-answer').forEach(item => {
+            item.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
