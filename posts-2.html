@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b08-sa-night-guide</title>
+  <meta name="description" content="t3b08-sa-night-guide에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://sangam-guide-info.program-school.online/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ *, *::before, *::after { 
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ html {
+ font-size: 16px;
+ scroll-behavior: smooth;
+ }
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+ background: #fdf8f3;
+ color: #1a1a1a;
+ line-height: 1.7;
+ }
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+ 
+ /* 헤더 & 네비게이션 */
+ header {
+ background: #ffffff;
+ border-bottom: 1px solid #e8e0d8;
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+ }
+ .nav-grid {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ height: 64px;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+ .logo a {
+ font-size: 1.4rem;
+ font-weight: 700;
+ color: #c0392b;
+ text-decoration: none;
+ letter-spacing: -0.5px;
+ }
+ .nav-links {
+ display: flex;
+ gap: 32px;
+ list-style: none;
+ }
+ .nav-links a {
+ text-decoration: none;
+ color: #333;
+ font-weight: 500;
+ font-size: 0.95rem;
+ transition: color 0.2s;
+ }
+ .nav-links a:hover {
+ color: #c0392b;
+ }
+ .hamburger {
+ display: none;
+ flex-direction: column;
+ gap: 5px;
+ background: none;
+ border: none;
+ cursor: pointer;
+ padding: 4px;
+ }
+ .hamburger span {
+ width: 26px;
+ height: 3px;
+ background: #333;
+ border-radius: 2px;
+ transition: 0.3s;
+ }
+
+ /* 히어로 */
+ .hero {
+ background: linear-gradient(135deg, #f5e6d3 0%, #fdf8f3 100%);
+ padding: 80px 0 60px;
+ text-align: center;
+ }
+ .hero-grid {
+ max-width: 800px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+ .hero h1 {
+ font-size: 2.8rem;
+ font-weight: 800;
+ color: #1a1a1a;
+ margin-bottom: 16px;
+ letter-spacing: -1px;
+ }
+ .hero p {
+ font-size: 1.2rem;
+ color: #555;
+ max-width: 600px;
+ margin: 0 auto 24px;
+ }
+
+ /* 섹션 공통 */
+ .section {
+ padding: 64px 0;
+ }
+ .section-title {
+ font-size: 1.8rem;
+ font-weight: 700;
+ margin-bottom: 32px;
+ color: #1a1a1a;
+ }
+
+ /* 정보 카드 */
+ .info-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+ gap: 28px;
+ }
+ .info-card {
+ background: #ffffff;
+ border-radius: 16px;
+ padding: 32px;
+ box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+ border: 1px solid #eee8e0;
+ transition: transform 0.2s, box-shadow 0.2s;
+ }
+ .info-card:hover {
+ transform: translateY(-4px);
+ box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+ }
+ .info-card h3 {
+ font-size: 1.3rem;
+ margin-bottom: 12px;
+ color: #c0392b;
+ }
+ .info-card p {
+ color: #444;
+ font-size: 0.95rem;
+ margin-bottom: 8px;
+ }
+ .info-card .highlight {
+ background: #fef3e8;
+ padding: 12px 16px;
+ border-radius: 10px;
+ margin-top: 16px;
+ font-weight: 500;
+ color: #8b4513;
+ }
+
+ /* FAQ */
+ .faq-list {
+ max-width: 800px;
+ margin: 0 auto;
+ }
+ .faq-item {
+ border-bottom: 1px solid #e8e0d8;
+ padding: 20px 0;
+ }
+ .faq-item:first-child {
+ border-top: 1px solid #e8e0d8;
+ }
+ .faq-question {
+ font-size: 1.1rem;
+ font-weight: 600;
+ color: #1a1a1a;
+ margin-bottom: 8px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ cursor: pointer;
+ }
+ .faq-answer {
+ color: #555;
+ font-size: 0.95rem;
+ line-height: 1.6;
+ padding-right: 20px;
+ }
+
+ /* 푸터 */
+ footer {
+ background: #1a1a1a;
+ color: #aaa;
+ padding: 48px 0 32px;
+ text-align: center;
+ }
+ footer p {
+ font-size: 0.9rem;
+ margin-bottom: 8px;
+ }
+ footer a {
+ color: #c0392b;
+ text-decoration: none;
+ }
+
+ /* 반응형 768px */
+ @media (max-width: 768px) {
+ .nav-links {
+ display: none;
+ flex-direction: column;
+ position: absolute;
+ top: 64px;
+ left: 0;
+ right: 0;
+ background: #ffffff;
+ padding: 20px 24px;
+ border-bottom: 1px solid #e8e0d8;
+ box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+ gap: 16px;
+ }
+ .nav-links.active {
+ display: flex;
+ }
+ .hamburger {
+ display: flex;
+ }
+ .hero h1 {
+ font-size: 2rem;
+ }
+ .hero p {
+ font-size: 1rem;
+ }
+ .section-title {
+ font-size: 1.5rem;
+ }
+ .info-grid {
+ grid-template-columns: 1fr;
+ }
+ .container {
+ padding: 0 16px;
+ }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b08-sa-night-guide">
+  <meta property="og:description" content="t3b08-sa-night-guide에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://sangam-guide-info.program-school.online/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <nav class="nav-grid">
+ <div class="logo"><a href="/">상암유흥</a></div>
+ <button class="hamburger" aria-label="메뉴 열기" onclick="this.classList.toggle('active'); document.querySelector('.nav-links').classList.toggle('active')">
+ 
+ </button>
+ <ul class="nav-links">
+ <li><a href="/">홈</a></li>
+ <li><a href="/places">장소</a></li>
+ <li><a href="/info">정보</a></li>
+ </ul>
+ </nav>
+ </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 40개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0378.html">상암 유흥 가이드 기반 구글 인덱싱 속도 초고속 광회선 대역폭 최적화 가이드</a>
+        <p class="post-item__summary">많은 이들이 콘텐츠만 많이 올리면 검색 노출이 자연스럽게 빨라질 것이라 오해하지만, 이는 데이터의 인덱싱 환경을 간과한 생각입니다. 상암 유흥 가이드 등 지역 정보를 다룰 때도 정보의 전달 속도와 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0379.html">상암 유흥 가이드 활용한 구글 신뢰 지수 모발이식 솔루션 전략</a>
+        <p class="post-item__summary">성공적인 온라인 비즈니스를 운영하기 위해서는 검색 엔진이 요구하는 엄격한 충족 조건을 완벽하게 이해해야 합니다. 특히 상암 유흥 가이드 키워드를 타깃으로 삼는 경우, 단순한 정보 전달을 넘어 검색 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0221.html">상암 유흥 가이드 활용한 망원 노래방 추천정보 탐색법</a>
+        <p class="post-item__summary">상암 유흥 가이드 자료를 참고할 때 망원 지역의 노래방을 찾는 과정은 체계적인 접근이 필요합니다. 먼저 자신의 예산과 선호하는 시설 수준을 설정하는 것이 첫 번째 단계입니다. 무작정 검색하기보다는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0222.html">상암 유흥 가이드 기반의 홍대 노래방 추천정보 선택 기준</a>
+        <p class="post-item__summary">상암 유흥 가이드에서 제공하는 지역 정보를 분석할 때 홍대 인근의 노래방을 비교하는 일은 합리적인 소비의 출발점입니다. 대형 프랜차이즈 시설과 개인 운영 업소를 대조해보면 각기 다른 매력이 확연히 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0223.html">상암 유흥 가이드 활용한 공덕 셔츠룸 추천정보 예약 팁</a>
+        <p class="post-item__summary">상암 유흥 가이드의 안내에 따라 공덕 지역의 시설을 예약할 때 많은 이들이 실패하는 지점은 준비 부족입니다. 특히 예약 가능한 시간대와 인원 제한에 대한 확인 없이 방문하는 경우가 빈번합니다. 이런</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0224.html">상암 유흥 가이드로 보는 연남 유흥 추천정보 체크리스트</a>
+        <p class="post-item__summary">상암 유흥 가이드에서 다루는 연남 지역의 정보들을 효율적으로 활용하려면 몇 가지 항목을 체크해야 합니다. 위치와 접근성은 방문 편의성을 결정짓는 가장 중요한 요소로 꼽힙니다. 연남동은 골목이 많고 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0225.html">상암 유흥 가이드 활용한 마곡 가라오케 추천정보 분석</a>
+        <p class="post-item__summary">갑작스러운 비즈니스 접대나 동료들과의 회식 장소를 찾을 때 마곡 지역의 환경을 미리 파악하는 것은 매우 중요합니다. 상암 유흥 가이드 내용을 참고하여 마곡 지구의 전반적인 분위기를 파악해 두면, 처</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0226.html">상암 유흥 가이드로 본 마곡 유흥 추천정보와 시간대</a>
+        <p class="post-item__summary">많은 사람이 마곡 지역의 밤 문화가 무조건 밤늦게 활발해질 것이라 생각하지만, 이는 반은 맞고 반은 틀린 이야기입니다. 상암 유흥 가이드 분석에 따르면 마곡은 주중 업무가 끝난 직후인 초저녁부터 첫</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0227.html">상암 유흥 가이드가 알려주는 합정 노래방 추천정보와 인원</a>
+        <p class="post-item__summary">성공적인 모임을 위해서는 장소의 넓이와 음향 설비, 그리고 인원 수용 가능 여부가 가장 중요한 충족 조건입니다. 상암 유흥 가이드의 맥락을 빌려 합정 일대를 살펴보면, 소규모 인원부터 대규모 단체까</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0228.html">상암 유흥 가이드와 함께 보는 연남 클럽 추천정보 선택법</a>
+        <p class="post-item__summary">오늘 밤 무엇을 할지 고민하고 계신가요? 수많은 연남동 공간들 중에서 나에게 딱 맞는 클럽을 고르는 기준은 과연 무엇인지 의문이 들 때가 많습니다. 상암 유흥 가이드의 관점을 활용하여 연남 지역을 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0229.html">상암 유흥 가이드 활용한 합정 셔츠룸 추천정보 선택 기준</a>
+        <p class="post-item__summary">서울 서북권에서 활동하는 직장인들이 상암 유흥 가이드 정보를 찾는 이유는 명확하다. 인근 지역의 여러 업소를 비교해보고 자신에게 맞는 합리적인 선택을 하기 위함이다. 특히 셔츠룸과 같은 특정 형태의</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0230.html">상암 유흥 가이드 참고하여 공덕 가라오케 추천정보 비교 분석</a>
+        <p class="post-item__summary">상암 유흥 가이드 내용을 검토해보면 공덕 지역의 유흥 인프라가 상당히 밀집해 있음을 알 수 있다. 많은 이용자가 가라오케를 선택할 때 가격과 서비스 품질이라는 두 가지 요소를 놓고 고민에 빠지곤 한</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0231.html">상암 유흥 가이드 기반 상수 마사지 추천정보 이용 예약 안내</a>
+        <p class="post-item__summary">상암 유흥 가이드 자료를 접한 많은 이들이 상수 인근의 릴렉스 시설을 찾곤 한다. 하지만 마사지 예약 과정에서 흔히 발생하는 실수가 있는데, 바로 사전 확인 없이 방문하는 것이다. 많은 사람이 시간</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/guide-001-1gwlek0.html">사장님 몰래 계산기 두드려본 결과, 이 업종은 이제 죽었다</a>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">상암 유흥 가이드</a>
+        <p class="post-item__summary">이 문서에서는 상암 지역의 유흥 관련 전반적인 안내를 제공합니다. 지역의 주요 특징과 방문 시 참고할 수 있는 기본적인 정보를 서술하는 목적으로 작성되었으며, 구체적인 업소명이나 영업 일정에 대해서</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">상암 유흥 가이드: 접대 장소 탐색을 위한 안내</a>
+        <p class="post-item__summary">상암 지역에서 모임이나 회식 후 취향에 맞는 접대 장소를 찾는 것은 쉽지 않은 과정입니다. 많은 이용자에게 필요하거나 원하는 분위기의 장소를 안내하는 정보는 신뢰할 수 있는 기준으로 접근할 때 더 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">상암 유흥 가이드</a>
+        <p class="post-item__summary">상암 지역은 업무 중심지가 아닌 특별한 여가 공간을 찾기 위한 목적으로 방문하시는 분들이 많습니다. 유흥 문화를 제대로 이해하고 방문하려면 해당 지역의 특징과 분위기를 사전에 파악하는 것이 매우 중</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">상암 유흥 가이드: 지역 문화와 용어 이해</a>
+        <p class="post-item__summary">상암은 다양한 미디어 기업과 공공 기관이 모여 있는 지역으로, 낮에는 업무의 중심지이지만 밤에는 또 다른 매력을 자랑합니다. 이 지역을 방문할 때 가장 먼저 필요한 것은 현지에 대한 기본적인 이해와</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">상암 유흥 가이드</a>
+        <p class="post-item__summary">상암은 미디어시티와 업무단지가 발달한 지역으로, 많은 직장인이 매일 출퇴근하는 지역입니다. 따라서 상암의 유흥 문화는 주로 업무 이후의 여가 활동과 밀접하게 연관되어 있습니다. 다양한 음식점, 카페</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/qa-002-xbjpp7.html">상암 유흥 가이드, 사장님이 숨기는 원가 비율은?</a>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
